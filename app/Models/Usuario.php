@@ -10,7 +10,7 @@ Use Carbon\Carbon;
 class Usuario extends Model
 {
     protected $connection = 'mysql';
-    protected $table = 'usuario';
+    protected $table = 'usuarios';
 
     public static function listar(int $limite){
         $sql= self::select([
