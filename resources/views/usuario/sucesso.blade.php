@@ -7,6 +7,6 @@
 
 @section('conteudo')
 <div class="alert alert-success" role="alert">
-cadastro realizado com sucesso!
+Cadastro realizado com sucesso!
 </div>   
 @endsection    
