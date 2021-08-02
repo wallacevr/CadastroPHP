@@ -12,6 +12,7 @@ class Usuario extends Controller
      return view('usuario.cadastro');
     }
     public function salvar(Request $request){
+        
         $request->validate([
             "nome"=>"required|min:5",
             "email"=>"required|email",
@@ -24,8 +25,15 @@ class Usuario extends Controller
             'senha.regex'=>'O campo senha deve conter no mínimo 6 caracteres com pelo menos um número e uma letra!',
             
         ]);
-        UsuarioModel::cadastrar($request);
-        return view('usuario.sucesso');
+        try{
+            UsuarioModel::cadastrar($request);
+            return redirect()->back()
+                ->with('success', 'Created successfully!');
+            //return view('usuario.sucesso');
+        } catch (\Exception $e){
+            return redirect()->back()
+                ->with('error', 'Error during the creation!');
+        }
     }
     //
 }
